@@ -829,7 +829,7 @@ class MPU6050:
                                a_grav_vect.z*a_grav_vect.z))
         # yaw: (about Z axis)
         yaw = math.atan2(2*a_quat.x*a_quat.y - 2*a_quat.w*a_quat.z,
-                         2*a_quat.w*a_quat.w + 2*a_quat.x*a_quat.x - 1)
+                         1 - 2*(a_quat.y*a_quat.y + a_quat.z*a_quat.z)) # taken from https://stackoverflow.com/questions/53033620/how-to-convert-euler-angles-to-quaternions-and-get-the-same-euler-angles-back-fr
         return V(roll, pitch, yaw)
 
     def DMP_get_euler_roll_pitch_yaw(self, a_quat, a_grav_vect):
