@@ -1,4 +1,4 @@
-__author__ = 'Geir Istad'
+__author__ = 'Jay'
 """
 MPU6050 Python I2C Class - MPU6050 example usage
 Copyright (c) 2015 Geir Istad
