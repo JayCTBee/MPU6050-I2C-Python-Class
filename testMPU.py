@@ -49,7 +49,7 @@ while count < 10000:
                 (accel.y < -12000) or (accel.z > 12000) or (accel.z < -12000):
             crazy_high += 1
 
-end_time = time.perfcounter() #clock()
+end_time = time.perf_counter() #clock()
 delta_time = end_time - start_time
 FIFO_sum = 0
 FIFO_max = 0
