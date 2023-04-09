@@ -1,5 +1,6 @@
 from MPU6050 import MPU6050
-from SimplePID import SimplePID
+#from SimplePID import SimplePID
+from simple_pid import PID 
 
 
 def avg_from_array(a_array):
@@ -30,12 +31,14 @@ kp = 0.03125
 ki = 0.25
 kd = 0
 
-pidax = SimplePID(0, -15000, 15000, kp, ki, kd, 100, True)
-piday = SimplePID(0, -15000, 15000, kp, ki, kd, 100, True)
-pidaz = SimplePID(0, -15000, 15000, kp, ki, kd, 100, True)
-pidgx = SimplePID(0, -15000, 15000, kp, ki, kd, 100, True)
-pidgy = SimplePID(0, -15000, 15000, kp, ki, kd, 100, True)
-pidgz = SimplePID(0, -15000, 15000, kp, ki, kd, 100, True)
+pidax = PID(kp, ki, kd, 0,1, (-15000, 15000),True )
+piday = PID(kp, ki, kd, 0,0, (-15000, 15000),True )
+pidaz = PID(kp, ki, kd, 0,0, (-15000, 15000),True )
+
+pidgx = PID(kp, ki, kd, 0,0, (-15000, 15000),True )
+pidgy = PID(kp, ki, kd, 0,0, (-15000, 15000),True )
+pidgz = PID(kp, ki, kd, 0,0, (-15000, 15000),True )
+
 
 accel_reading = mpu.get_acceleration()
 
@@ -85,8 +88,8 @@ try:
         y_gyro_reading = gyro_reading[1]
         z_gyro_reading = gyro_reading[2]
 
-        if pidax.check_time():
-            x_accel_offset = pidax.get_output_value(x_accel_reading)
+        if 1 > 0:
+            x_accel_offset = pidax(x_accel_reading)
 
             mpu.set_x_accel_offset(int(x_accel_offset))
 
@@ -109,8 +112,8 @@ try:
                       ' z_avg_offset: ' +
                       str(avg_from_array(z_accel_offset_avg)))
 
-        if piday.check_time():
-            y_accel_offset = piday.get_output_value(y_accel_reading)
+        if 1 > 0:
+            y_accel_offset = piday(y_accel_reading)
 
             mpu.set_y_accel_offset(int(y_accel_offset))
 
@@ -121,8 +124,8 @@ try:
             if ayindex == len(y_accel_avg):
                 ayindex = 0
 
-        if pidaz.check_time():
-            z_accel_offset = pidaz.get_output_value(z_accel_reading)
+        if 1 > 0:
+            z_accel_offset = pidaz(z_accel_reading)
 
             mpu.set_z_accel_offset(int(z_accel_offset))
 
@@ -134,8 +137,8 @@ try:
                 azindex = 0
 
         # Gyro calibration
-        if pidgx.check_time():
-            x_gyro_offset = pidgx.get_output_value(x_gyro_reading)
+        if 1 > 0:
+            x_gyro_offset = pidgx(x_gyro_reading)
 
             mpu.set_x_gyro_offset(int(x_gyro_offset))
 
@@ -158,8 +161,8 @@ try:
                       ' z_avg_offset: ' +
                       str(avg_from_array(z_gyro_offset_avg)))
 
-        if pidgy.check_time():
-            y_gyro_offset = pidgy.get_output_value(y_gyro_reading)
+        if 1 >0:
+            y_gyro_offset = pidgy(y_gyro_reading)
 
             mpu.set_y_gyro_offset(int(y_gyro_offset))
 
@@ -170,8 +173,8 @@ try:
             if gyindex == len(y_gyro_avg):
                 gyindex = 0
 
-        if pidgz.check_time():
-            z_gyro_offset = pidgz.get_output_value(z_gyro_reading)
+        if 1 > 0:
+            z_gyro_offset = pidgz(z_gyro_reading)
 
             mpu.set_z_gyro_offset(int(z_gyro_offset))
 
@@ -184,3 +187,4 @@ try:
 
 except KeyboardInterrupt:
     pass
+
