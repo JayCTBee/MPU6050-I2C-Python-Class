@@ -148,15 +148,15 @@ try:
             gxindex += 1
             if gxindex == len(x_gyro_avg):
                 gxindex = 0
-                print('x_avg_read: ' +
+                print('x_gyro_avg_read: ' +
                       str(avg_from_array(x_gyro_avg)) +
                       ' x_avg_offset: ' +
                       str(avg_from_array(x_gyro_offset_avg)))
-                print('y_avg_read: ' +
+                print('y_gyro_avg_read: ' +
                       str(avg_from_array(y_gyro_avg)) +
                       ' y_avg_offset: ' +
                       str(avg_from_array(y_gyro_offset_avg)))
-                print('z_avg_read: ' +
+                print('z_gyro_avg_read: ' +
                       str(avg_from_array(z_gyro_avg)) +
                       ' z_avg_offset: ' +
                       str(avg_from_array(z_gyro_offset_avg)))
