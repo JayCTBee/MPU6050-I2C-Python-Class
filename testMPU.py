@@ -1,4 +1,4 @@
-__author__ = 'Geir'
+__author__ = 'Jay'
 
 from MPU6050 import MPU6050
 from time import clock
