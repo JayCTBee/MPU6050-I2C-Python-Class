@@ -1,7 +1,8 @@
 __author__ = 'Jay'
 
 from MPU6050 import MPU6050
-from time import clock
+#from time import clock
+import time
 
 mpu = mpu = MPU6050(1, 0x68, -5489, -1441, 1305, -2, -72, -5, True)
 
@@ -23,7 +24,7 @@ FIFO_buffer = [0]*64
 overflow = 0
 no_overflow = 0
 crazy_high_number = 0
-start_time = clock()
+start_time = time.perf_counter() #clock()
 # FIFO_list = list()
 FIFO_count_list = list()
 while count < 10000:
@@ -48,7 +49,7 @@ while count < 10000:
                 (accel.y < -12000) or (accel.z > 12000) or (accel.z < -12000):
             crazy_high += 1
 
-end_time = clock()
+end_time = time.perfcounter() #clock()
 delta_time = end_time - start_time
 FIFO_sum = 0
 FIFO_max = 0
