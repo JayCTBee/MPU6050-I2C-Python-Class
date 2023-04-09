@@ -5,6 +5,6 @@ A bunch of issues have been fixed from thisisG's Python Class with this repo (in
 
 Make sure I2C has been activated on your Pi using raspi-config.
 
-Make sure to have "pip3 install simple-pid" installed when testing "MPU6050_cal.py". This not required to run this however this:
+Make sure to have "pip3 install simple-pid" installed when testing "MPU6050_cal.py". This not required to run this however:
 
 Try "python3 MPU6050_example.py" for reading sequence of roll, pitch and yaw. Note: offset will periodically be recalcuated during runtime
