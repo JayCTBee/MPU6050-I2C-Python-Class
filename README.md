@@ -1,5 +1,5 @@
 # MPU6050-I2C-Python-Class
-Using a MPU6050 and its Digital Motion Processor (DMP) over I2C with Python on a Raspberry PI
+Using a MPU6050 and its Digital Motion Processor (DMP) over I2C with Python on a Raspberry PI. FYI: DMP code is stored in MPUConstans file.
 
 A bunch of issues have been fixed from thisisG's Python Class with this repo (incorrect yaw calc, python3 syntax, replaced time.clock(), etc).
 
