@@ -813,7 +813,7 @@ class MPU6050:
     def DMP_get_euler(self, a_quat):
         psi = math.atan2(2*a_quat.x*a_quat.y - 2*a_quat.w*a_quat.z,
                          2*a_quat.w*a_quat.w + 2*a_quat.x*a_quat.x - 1)
-        theta = -asin(2*a_quat.x*a_quat.z + 2*a_quat.w*a_quat.y)
+        theta = math.asin(2*a_quat.x*a_quat.z + 2*a_quat.w*a_quat.y)
         phi = math.atan2(2*a_quat.y*a_quat.z - 2*a_quat.w*a_quat.x,
                          2*a_quat.w*a_quat.w + 2*a_quat.z*a_quat.z - 1)
         return V(psi, theta, phi)
@@ -828,7 +828,7 @@ class MPU6050:
                           math.sqrt(a_grav_vect.y*a_grav_vect.y +
                                a_grav_vect.z*a_grav_vect.z))
         # yaw: (about Z axis)
-        yaw = math.atan2(2*a_quat.x*a_quat.y - 2*a_quat.w*a_quat.z,
+        yaw = math.atan2(2*a_quat.x*a_quat.y + 2*a_quat.w*a_quat.z,
                          1 - 2*(a_quat.y*a_quat.y + a_quat.z*a_quat.z)) # taken from https://stackoverflow.com/questions/53033620/how-to-convert-euler-angles-to-quaternions-and-get-the-same-euler-angles-back-fr
         return V(roll, pitch, yaw)
 
